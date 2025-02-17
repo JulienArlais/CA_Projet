@@ -22,8 +22,28 @@ let decode_header bytecode =
   let index = 0 in
 
   (* On lit la signature, ESC + "Lua", 1 octet + 3 octet *)
-  let signature_byte, index = get_byte index bytecode in
-  let signature     , index = get_string index bytecode 3 in
+  let signature_byte  , index = get_byte index bytecode in
+  let signature       , index = get_string index bytecode 3 in
 
+  (* TODO verif signature *)
   
-  
+  let vm_version      , index = get_byte index bytecode in
+  let bytecode_format , index = get_byte index bytecode in
+  let big_endian      , index = get_byte index bytecode in (* verif si sa convertit bien en bool *)
+  let int_size        , index = get_byte index bytecode in
+  let size_t          , index = get_byte index bytecode in
+  let instr_size      , index = get_byte index bytecode in
+  let l_number_size   , index = get_byte index bytecode in
+  let integral_flag   , index = get_byte index bytecode in
+
+  {
+    (*TODO signature *)
+    vm_version;
+    bytecode_format;
+    big_endian;
+    int_size;
+    size_t;
+    instr_size;
+    l_number_size;
+    integral_flag;
+  }
