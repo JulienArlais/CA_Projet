@@ -47,3 +47,11 @@ let decode_header bytecode =
     l_number_size;
     integral_flag;
   }
+
+(* Ce qui suit = ce que le prof m'a dit de faire mais j'ai pas tout compris *)
+
+(* problème : les entiers en OCaml sont sur 31bits et non 32 -> fonction spéciale à utiliser *)
+
+let main nom = (* nom -> nom du fichier .out *)
+  let ic = open_in nom in (* ic -> descripteur de fichier *)
+  let s = really_input_string ic nb (* nb -> fct pour obtenir le nb de caractères *)
